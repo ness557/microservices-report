@@ -1,0 +1,23 @@
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    instance-id: ${spring.application.name}:${random.int[1,1000]}
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    lease:
+      duration: 5
+
+spring:
+  application:
+    name: second-level-service
+
+# actuator/hystrix.stream enable
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 0

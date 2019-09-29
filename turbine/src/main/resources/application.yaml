@@ -1,0 +1,27 @@
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    instance-id: ${spring.application.name}:${random.int[1,1000]}
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    lease:
+      duration: 5
+
+spring:
+  application:
+    name: turbine
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 5555
+turbine:
+  app-config: SECOND-LEVEL-SERVICE
+  cluster-name-expression: new String("default")
+
